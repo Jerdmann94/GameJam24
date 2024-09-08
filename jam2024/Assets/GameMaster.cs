@@ -7,7 +7,8 @@ public class GameMaster : MonoBehaviour
     public static bool GameRunning = false;
     void Start()
     {
-        GameRunning = false;
+        //THIS NEEDS TO BE CHANGED LATER FOR WHEN THE PLAYER PRESSES START GAME
+        GameRunning = true;
     }
 
     public static void RestartGame()
