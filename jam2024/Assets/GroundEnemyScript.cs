@@ -12,6 +12,8 @@ public class GroundEnemyScript : MonoBehaviour
     private Transform groundCheckLeft;
     private Transform groundCheckRight;
     private bool moveRight = true;
+    public float raycastInterval = 0.2f;
+    private float nextRaycastTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,18 +32,24 @@ public class GroundEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isEdgeLeft = !Physics2D.Raycast(groundCheckLeft.position, Vector2.down, edgeCheckDistance, groundLayer);
-
-        bool isEdgeRight = !Physics2D.Raycast(groundCheckRight.position, Vector2.down, edgeCheckDistance, groundLayer);
-
-        if (isEdgeLeft || isEdgeRight || transform.position.x > startPosition.x + range || transform.position.x < startPosition.x - range)
+        if (Time.time >= nextRaycastTime)
         {
-            moveRight = !moveRight;
+            Debug.Log("raygun");
+            nextRaycastTime = Time.time + raycastInterval; 
+
+            bool isEdgeLeft = !Physics2D.Raycast(groundCheckLeft.position, Vector2.down, edgeCheckDistance, groundLayer);
+            bool isEdgeRight = !Physics2D.Raycast(groundCheckRight.position, Vector2.down, edgeCheckDistance, groundLayer);
+
+            if (isEdgeLeft || isEdgeRight || transform.position.x > startPosition.x + range || transform.position.x < startPosition.x - range)
+            {
+                moveRight = !moveRight;
+            }
         }
         if (moveRight)
         {
             transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
-        } else {
+        } else 
+        {
             transform.position -= new Vector3(speed, 0, 0) * Time.deltaTime;
         }
     }
