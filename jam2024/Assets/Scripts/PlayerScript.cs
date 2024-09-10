@@ -7,30 +7,16 @@ public class PlayerScript : MonoBehaviour
 {
     private Camera _camera;
 
-    private Transform player;
-
     private Rigidbody2D rb;
 
+
+    public float runMovement = 3f;
+
+    public float jumpForce = 5f;
+    public float groundCheckRadius = 0.2f; // The radius of the ground check
+    public LayerMask groundLayer;          // The layer for ground objects
+    public Transform groundCheck;   
     private bool isGrounded;
-
-    public float runMovement = 2f;
-
-    public float jumpForce = 4f;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +29,8 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         if (_camera) _camera.transform.position = transform.position + new Vector3(0, 0, -10);
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (Input.GetKey("a"))
         {
