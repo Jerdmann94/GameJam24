@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundEnemyScript : MonoBehaviour
+public class GroundEnemyScript : AKillable 
 {
     private Vector3 startPosition;
     public float range = 1;
@@ -19,6 +19,7 @@ public class GroundEnemyScript : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        ResetPosition = transform.position;
          groundCheckLeft = new GameObject("GroundCheckLeft").transform;
         groundCheckRight = new GameObject("GroundCheckRight").transform;
 
@@ -52,5 +53,13 @@ public class GroundEnemyScript : MonoBehaviour
         {
             transform.position -= new Vector3(speed, 0, 0) * Time.deltaTime;
         }
+    }
+
+    public override Vector3 ResetPosition { get; set; }
+    public override void Reset()
+    {
+        transform.position = ResetPosition;
+        KillMe();
+        RespawnMe();
     }
 }
