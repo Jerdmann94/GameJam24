@@ -21,7 +21,7 @@ public class FlyingEnemyScript : AKillable
 
     void Update()
     {
-        if (!GameMaster.GameRunning) return;
+        if (!GameMaster.GameRunning || !Loaded) return;
         // Update the angle over time
         _angle += speed * Time.deltaTime;
 

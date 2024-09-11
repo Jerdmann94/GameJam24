@@ -30,5 +30,6 @@ public abstract class AKillable : MonoBehaviour, IResetEnemy
    }
 
    public abstract Vector3 ResetPosition { get; set; }
+   public bool Loaded { get; set; }
    public abstract void Reset();
 }

@@ -33,6 +33,7 @@ public class GroundEnemyScript : AKillable
     // Update is called once per frame
     void Update()
     {
+        if (!GameMaster.GameRunning || !Loaded) return;
         if (Time.time >= nextRaycastTime)
         {
             Debug.Log("raygun");

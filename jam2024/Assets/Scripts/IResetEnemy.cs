@@ -5,6 +5,8 @@ using UnityEngine;
 public interface IResetEnemy
 {
    public Vector3 ResetPosition { get; set; }
+   
+   public bool Loaded { get; set; }
    public void Reset();
 }
 
