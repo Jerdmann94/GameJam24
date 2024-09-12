@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using UnityEngine;
 
 public class GroundEnemyScript : AKillable 
@@ -33,7 +34,11 @@ public class GroundEnemyScript : AKillable
     // Update is called once per frame
     void Update()
     {
-        if (!GameMaster.GameRunning || !Loaded) return;
+        if (!isTesting)
+        {
+            if (!GameMaster.GameRunning || !Loaded ) return;
+        }
+        
         if (Time.time >= nextRaycastTime)
         {
             Debug.Log("raygun");

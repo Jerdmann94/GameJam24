@@ -29,6 +29,7 @@ public abstract class AKillable : MonoBehaviour, IResetEnemy
       gameObject.GetComponent<SpriteRenderer>().enabled = true;
    }
 
+   public bool isTesting = false;
    public abstract Vector3 ResetPosition { get; set; }
    public bool Loaded { get; set; }
    public abstract void Reset();
