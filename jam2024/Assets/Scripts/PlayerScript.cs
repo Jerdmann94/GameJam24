@@ -30,8 +30,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (_camera) _camera.transform.position = transform.position + new Vector3(0, 0, -10);
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
         if (Input.GetKey("a"))
         {
             transform.position += new Vector3(-runMovement, 0, 0) * Time.deltaTime;
@@ -46,5 +44,9 @@ public class PlayerScript : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
+    }
+    void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 }
