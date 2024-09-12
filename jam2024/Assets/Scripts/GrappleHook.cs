@@ -1,74 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using static UnityEngine.Camera;
 
-public class GrappleHook : MonoBehaviour {
+public class GrappleHook : MonoBehaviour
+{
     [SerializeField] private LineRenderer rope;
 
     [SerializeField] LayerMask grappableMask;
     [SerializeField] float maxDistance = 10f;
     [SerializeField] float grappableSpeed = 10f;
     [SerializeField] float grappableShootSpeed = 20f;
-
-    bool isGrappling = false;
-    [HideInInspector] public bool retracting = false;
-
-    Vector2 target;
-
-    private void Start() {
-        
-    }
-
-    private void Update() {
-        if (Input.GetMouseButtonDown(0) && !isGrappling) {
-            StartGrapple();
-        }
-
-        if (retracting) {
-            Vector2 grapplePos = Vector2.Lerp(transform.position, target, grappableSpeed * Time.deltaTime);
-
-            transform.position = grapplePos;
-
-            rope.SetPosition(0, transform.position);
-
-            if (Vector2.Distance( transform.position, target) < 2f) {
-                retracting = false;
-                isGrappling = false;
-                rope.enabled = false;
-            } 
-        }
-    }
-
-    private void StartGrapple() {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance, grappableMask);
-
-        if (hit.collider != null) {
-            isGrappling = true;
-            target = hit.point;
+    
+    private Camera _camera1; 
+    public DistanceJoint2D distanceJoint;
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Vector2 mousePos = (Vector2)main.ScreenToWorldPoint(Input.mousePosition);
+            rope.SetPosition(0, mousePos);
+            rope.SetPosition(1, transform.position);
+            distanceJoint.connectedAnchor = mousePos;
+            distanceJoint.enabled = true;
             rope.enabled = true;
-            rope.positionCount = 2;
-
-            StartCoroutine(Grapple());
         }
-    }
-
-    IEnumerator Grapple() {
-        float t = 0;
-        float time = 10;
-        rope.SetPosition(0, transform.position);
-        rope.SetPosition(1, transform.position);
-
-        Vector2 newPos;
-
-        for (; t < time; t += grappableShootSpeed * Time.deltaTime) {
-            newPos = Vector2.Lerp(transform.position, target, t / time);
-            rope.SetPosition(0, transform.position);
-            rope.SetPosition(1, newPos);
-            yield return null;
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            distanceJoint.enabled = false;
+            rope.enabled = false;
         }
-        rope.SetPosition(1, target);
-        retracting = true;
+
+        if (distanceJoint.enabled)
+        {
+            rope.SetPosition(1, transform.position);
+        }
+
     }
 }
