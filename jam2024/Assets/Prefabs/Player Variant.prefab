@@ -203,7 +203,9 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.06820446
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4789867078959644869, guid: 369da4b27546e3746acc075b2108887b, type: 3}
+    - {fileID: 9197403482800876299, guid: 369da4b27546e3746acc075b2108887b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3603114836925134657, guid: 369da4b27546e3746acc075b2108887b, type: 3}
     m_AddedGameObjects:
@@ -220,6 +222,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5186278088229303207, guid: 369da4b27546e3746acc075b2108887b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7105003439779337283}
+    - targetCorrespondingSourceObject: {fileID: 5186278088229303207, guid: 369da4b27546e3746acc075b2108887b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1817996467247881188}
   m_SourcePrefab: {fileID: 100100000, guid: 369da4b27546e3746acc075b2108887b, type: 3}
 --- !u!1 &467101189527269033 stripped
 GameObject:
@@ -299,8 +304,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1817996467247881188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467101189527269033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ec67487dcdcb3409eb43520ed7758a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rope: {fileID: 8878677286810175456}
+  grappableMask:
+    serializedVersion: 2
+    m_Bits: 64
+  maxDistance: 10
+  grappableSpeed: 10
+  grappableShootSpeed: 20
+  retracting: 0
 --- !u!4 &1349393366182478985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5996582907524716935, guid: 369da4b27546e3746acc075b2108887b, type: 3}
+  m_PrefabInstance: {fileID: 4720377690243456270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &8878677286810175456 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 4230361696025549550, guid: 369da4b27546e3746acc075b2108887b, type: 3}
   m_PrefabInstance: {fileID: 4720377690243456270}
   m_PrefabAsset: {fileID: 0}

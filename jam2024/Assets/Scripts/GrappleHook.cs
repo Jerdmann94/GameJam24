@@ -16,7 +16,7 @@ public class GrappleHook : MonoBehaviour {
     Vector2 target;
 
     private void Start() {
-        rope = GetComponent<LineRenderer>();
+        
     }
 
     private void Update() {

@@ -102,12 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010bd066e8d459d42b78b0f7b26306b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTesting: 1
   range: 1
   speed: 0.5
   edgeCheckDistance: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  raycastInterval: 0.2
 --- !u!50 &2905704961525159235
 Rigidbody2D:
   serializedVersion: 4
