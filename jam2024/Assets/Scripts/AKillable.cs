@@ -20,6 +20,7 @@ public abstract class AKillable : MonoBehaviour, IResetEnemy
       gameObject.GetComponent<Rigidbody2D>().simulated= false;
       gameObject.GetComponent<Collider2D>().enabled = false;
       gameObject.GetComponent<SpriteRenderer>().enabled = false;
+      Loaded = false;
    }
 
    public void RespawnMe()
@@ -27,6 +28,7 @@ public abstract class AKillable : MonoBehaviour, IResetEnemy
       gameObject.GetComponent<Rigidbody2D>().simulated = true;
       gameObject.GetComponent<Collider2D>().enabled = true;
       gameObject.GetComponent<SpriteRenderer>().enabled = true;
+      Loaded = true;
    }
 
    public bool isTesting = false;

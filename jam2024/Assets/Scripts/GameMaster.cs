@@ -5,14 +5,16 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     public static bool GameRunning = false;
-    void Start()
+    public GameObject uiPanel;
+   
+    public void GameStart()
     {
-        //THIS NEEDS TO BE CHANGED LATER FOR WHEN THE PLAYER PRESSES START GAME
         GameRunning = true;
+        uiPanel.SetActive(false);
     }
-
-    public static void RestartGame()
+    public void RestartGame()
     {
-        
+        GameRunning = false;
+        uiPanel.SetActive(true);
     }
 }

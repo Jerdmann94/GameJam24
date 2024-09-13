@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6750154994656165803}
   - component: {fileID: 5654260548279640029}
   - component: {fileID: 6979778847805664822}
-  - component: {fileID: 4898693306555334734}
+  - component: {fileID: 6793632429172349696}
   m_Layer: 0
   m_Name: GameTimer
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5654260548279640029}
   m_maskType: 0
---- !u!114 &4898693306555334734
+--- !u!114 &6793632429172349696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
