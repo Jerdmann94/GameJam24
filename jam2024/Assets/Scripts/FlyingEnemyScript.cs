@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FlyingEnemyScript : AKillable
 {
-    public float radius = 1.75f;       // Radius of the circle
+    public float radius = 1f;       // Radius of the circle
     public float speed = 1f;        // Speed of the circular movement
     public Vector2 centerPosition;  // Center of the circle
 

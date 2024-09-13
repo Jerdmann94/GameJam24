@@ -6,8 +6,12 @@ using static UnityEngine.Camera;
 public class PlayerScript : MonoBehaviour
 {
     private Camera _camera;
+    public Sprite groundSprite;
+    public Sprite jumpSprite; 
+    public Sprite fallSprite; 
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
 
     public float runMovement = 3f;
@@ -23,12 +27,27 @@ public class PlayerScript : MonoBehaviour
     {
         _camera = main;
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = groundSprite;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_camera) _camera.transform.position = transform.position + new Vector3(0, 0, -10);
+
+        if (rb.velocity.y > 0)
+        {
+            spriteRenderer.sprite = jumpSprite;
+        }
+        else if (rb.velocity.y < 0)
+        {
+            spriteRenderer.sprite = fallSprite;
+        }
+        else if (rb.velocity.y == 0)
+        {
+            spriteRenderer.sprite = groundSprite;
+        }
 
         if (Input.GetKey("a"))
         {
